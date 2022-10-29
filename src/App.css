@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+ul {
+  list-style: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* ==========================================
+css for frontend\src\Components\Shared\Nav.js
+========================================== */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-bar {
+  position: sticky;
+  top: 0;
+  height: 70px;
+  background-color: black;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 0 4rem;
+}
+
+.nav-bar h2 {
+  font-size: 40px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-bag {
+  display: flex;
+  align-items: center;
+}
+.BsFillBagCheckFill {
+  font-size: 30px;
+  color: white;
+  margin-top: 5px;
+}
+.bag-quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: yellow;
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+  margin-left: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 665px) {
+  .nav-bar {
+    padding: 0 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  .nav-bar h2 {
+    font-size: 30px;
+  }
+  .BsFillBagCheckFill {
+    font-size: 25px;
   }
 }
