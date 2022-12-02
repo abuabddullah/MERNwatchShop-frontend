@@ -1,15 +1,33 @@
+import { configureStore } from "@reduxjs/toolkit";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import { productsAPI } from "./features/productsAPI";
+import productsReducer, { fetchProducts } from "./features/productsSlice";
+import cartReducer from "./features/cartSlice";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+
+const store = configureStore({
+  reducer: {
+    products: productsReducer,
+    cart: cartReducer,
+    [productsAPI.reducerPath]: productsAPI.reducer, // x
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsAPI.middleware), // x
+});
+
+store.dispatch(fetchProducts());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

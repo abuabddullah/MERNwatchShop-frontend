@@ -4,21 +4,21 @@ import Home from "./Components/Home/Home";
 import Cart from "./Components/Cart/Cart";
 import NotFound from "./Components/Shared/NotFound";
 import Nav from "./Components/Shared/Nav";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="mainApp">
-      <Nav/>
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="cart" element={<Cart />} />
-
-
-
+        <Route path="/cart" element={<Cart />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

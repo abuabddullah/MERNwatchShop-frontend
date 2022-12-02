@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+### Redux RTK Query (MERN Watch Shop)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> > Redux **RTK Query** মূলত redux tool kit এরই একটা advanced feature so এটা use করতে হলে পূর্বে বর্ণনা অনুযায়ী **redux tool kit** implemented থাকতে হবে
+>
+> > source: https://redux-toolkit.js.org/rtk-query/api/createApi
 
-## Available Scripts
+## Redux RTK Query (fetching All Posts By GET API request)
 
-In the project directory, you can run:
+1. steps to fetch all products by RTK Query
+   > > frontend\src\ **_features_** folder এ frontend\src\features\ **_productsAPI.js_** file নামের একটা file বানাবো
+   >
+   > > প্রথমে **createApi, fetchBaseQuery** কে import করে নিব
+   >
+   > > **createApi** এর সাহায্যে **_productsAPI_** নামের একটা function বানাব যেটা পাশাপাশি inline exported হবে
+   > >
+   > > > এই function এর ভিতরে **_reducerPath_** key এর value হিসেবে **_productsAPI_** ই দিতে হবে
+   > >
+   > > > **_baseUrl_** এর value হিসবে deploy করার আগপর্যন্ত আমাদের lolcalHost এর **base link** হবে
+   > >
+   > > > তারপর **_endspoints_** এর callback function ভিতরে একটা custom key দিব **_getAllProducts_** নামের [**এটা মুলত কাজের উপরে ভিত্তি করে naming করতে হবে**]এর ভিতরে **query** তে **products** লিখব [**এটা মূলত fetch করে কি পেতে চাচ্ছি তা লিখে**]
+   >
+   > > তারপর নিচে একটা **_productsAPI_** এর সাহায্যে একটা custom hook [**যা কাজের উপর ভিত্তি করে naming করেনিতে হবে**] তা inline export করব
 
-### `npm start`
+```http
+filePath: frontend\src\features\productsAPI.js
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+// Need to use the React-specific entry point to allow generating React hooks
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+// Define a service using a base URL and expected endpoints
+export const productsAPI = createApi({ // x
+  reducerPath: "productsAPI", // x
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }), // x
+  endpoints: (builder) => ({
+    getAllProducts: builder.query({ // x
+      query: () => `products`, // x
+    }),
+  }),
+});
 
-### `npm test`
+// Export hooks for usage in function components, which are
+// auto-generated based on the defined endpoints
+export const { useGetAllProductsQuery } = productsAPI;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. steps to fetch all products by RTK Query
+   > > frontend\src\ **_index.js_** file এ প্রথমে **_productsAPI_** কে import করে নিব তারপর
+   >
+   > > store এর ভিতরে নিচের মতকরে **_reducerPath & middleweare_** বানাব
+   > >
+   > > > খেয়াল রাখতে হবে যে **middleweare** বানানোর সময় যেন **_getDefaultMiddleware_** টা যাতে **_@reduxjs/toolkit_** থেকে auto import হয়ে না যায়
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```http
+filePaths: frontend\src\index.js
+""""""""""""""""""""""""""""""
+import { configureStore } from "@reduxjs/toolkit";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import { productsAPI } from "./features/productsAPI";
+import productsReducer, { fetchProducts } from "./features/productsSlice";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const store = configureStore({
+  reducer: {
+    products: productsReducer,
+    [productsAPI.reducerPath]: productsAPI.reducer, // x
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsAPI.middleware), // x
+});
 
-### `npm run eject`
+store.dispatch(fetchProducts());
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>
+);
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
 
-## Learn More
+5. এবার frontend\src\Components\Home\ **_Home.js_** file এ **_useGetAllProductsQuery_** কে import করে নিয়ে Home component এর ভিতরে একে destructure করে আমাদের কাংক্ষিত **_{ data, error, isLoading }_** products কে পেয়ে যাব
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```http
+filePath: frontend\src\Components\Home\Home.js
+"""""""""""""""""""""""""""""""""""""""""""""""""
+import React from 'react';
+import { useGetAllProductsQuery } from './../../features/productsAPI';
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+const Home = () => {
+    const { data, error, isLoading } = useGetAllProductsQuery();
+    return (
+        <div>
+            its <b>Home</b> page
+        </div>
+    );
+};
 
-### Code Splitting
+export default Home;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. এবার frontend এবং backend এর both terminal run আছে কিনা ensure করে নিব তাহলেই browser এর **_Redux Dev Tool_** extension এ আমরা আমাদের কাংক্ষিত data পেয়ে যাব
