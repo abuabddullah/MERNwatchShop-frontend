@@ -1,14 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import CartItemComponent from "./CartItemComponent";
 import { clearCart } from "../../features/cartSlice";
 
 const Cart = () => {
-  const { cartItems, cartTotalQuantity, cartTotalAmmount } = useSelector(
-    (state) => state.cart
-  );
+  const { cartItems, cartTotalAmmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const handleClearCart = () => {
     dispatch(clearCart());

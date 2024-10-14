@@ -1,10 +1,10 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Cart from "./Components/Cart/Cart";
 import NotFound from "./Components/Shared/NotFound";
 import Nav from "./Components/Shared/Nav";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Wishlist from "./Components/Wishlist/Wishlist";
 

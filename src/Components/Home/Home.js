@@ -12,7 +12,6 @@ const Home = () => {
   };
 
   const handleAddToWish = (product) => {
-    console.log("wish to buy", product);
     dispatch(addToWishlist(product));
   };
 
@@ -39,7 +38,10 @@ const Home = () => {
                   <button onClick={() => handleAddToCart(product)}>
                     Add to Cart
                   </button>
-                  <button onClick={() => handleAddToWish(product)}>
+                  <button
+                    className="mt-2"
+                    onClick={() => handleAddToWish(product)}
+                  >
                     Wish to Buy
                   </button>
                 </div>

@@ -1,11 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
-import {
-  addToWishlist,
-  clearWishlist,
-  removeFromWishlist,
-} from "../../features/wishSlice";
+import { clearWishlist, removeFromWishlist } from "../../features/wishSlice";
 import { Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 
@@ -62,7 +58,10 @@ const Wishlist = () => {
                     <button onClick={() => handleAddToCart(product)}>
                       Add to Cart
                     </button>
-                    <button onClick={() => handleRemoveFromWishlist(product)}>
+                    <button
+                      className="mt-2"
+                      onClick={() => handleRemoveFromWishlist(product)}
+                    >
                       Remove From Wishlist
                     </button>
                   </div>
@@ -71,7 +70,12 @@ const Wishlist = () => {
 
             <div>
               <hr />
-              <button onClick={handleClearWishlist}>Clear Wishlist</button>
+              <button
+                className="mt-2 border p-2 rounded-lg "
+                onClick={handleClearWishlist}
+              >
+                Clear Wishlist
+              </button>
             </div>
           </>
         )}
