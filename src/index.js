@@ -7,6 +7,7 @@ import App from "./App";
 import { productsAPI } from "./features/productsAPI";
 import productsReducer, { fetchProducts } from "./features/productsSlice";
 import cartReducer from "./features/cartSlice";
+import wishReducer from "./features/wishSlice";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
@@ -14,9 +15,11 @@ const store = configureStore({
   reducer: {
     products: productsReducer,
     cart: cartReducer,
+    wishlist: wishReducer,
     [productsAPI.reducerPath]: productsAPI.reducer, // x
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsAPI.middleware), // x
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(productsAPI.middleware), // x
 });
 
 store.dispatch(fetchProducts());

@@ -6,6 +6,7 @@ import NotFound from "./Components/Shared/NotFound";
 import Nav from "./Components/Shared/Nav";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Wishlist from "./Components/Wishlist/Wishlist";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

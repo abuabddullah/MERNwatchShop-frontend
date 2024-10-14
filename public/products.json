@@ -1,0 +1,72 @@
+[
+    {
+      "id": 1,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 399,
+      "image": "https://images.unsplash.com/photo-1573261821759-fdd1b36d9ca5?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVucyUyMHdhdGNofGVufDB8fDB8fHww"
+    },
+    {
+      "id": 2,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 39,
+      "image": "https://images.pexels.com/photos/364822/rolex-watch-time-luxury-364822.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+      "id": 3,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 3,
+      "image": "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+      "id": 4,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 999,
+      "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "id": 5,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 99,
+      "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "id": 6,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 9,
+      "image": "https://images.unsplash.com/photo-1573261821759-fdd1b36d9ca5?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVucyUyMHdhdGNofGVufDB8fDB8fHww"
+    },
+    {
+      "id": 7,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 1000,
+      "image": "https://images.pexels.com/photos/364822/rolex-watch-time-luxury-364822.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+      "id": 8,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 2000,
+      "image": "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    },
+    {
+      "id": 9,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 3000,
+      "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "id": 10,
+      "name": "Fitness Smartwatch",
+      "desc": "Fitness Smartwatch with Heart Rate Monitor, Activity Tracker with 1.3 Inch Touch Screen, IP68 Waterproof Smart Watch with Step Counter, Calorie Counter",
+      "price": 4000,
+      "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D"
+    }
+  ]

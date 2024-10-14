@@ -1,16 +1,21 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
-import { useGetAllProductsQuery } from "./../../features/productsAPI";
+import { addToWishlist } from "../../features/wishSlice";
 
 const Home = () => {
-  const { data, error, isLoading } = useGetAllProductsQuery();
+  const { items, error, isLoading } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
-  
+
+  const handleAddToWish = (product) => {
+    console.log("wish to buy", product);
+    dispatch(addToWishlist(product));
+  };
+
   return (
     <div className="home-container">
       {isLoading ? (
@@ -22,8 +27,8 @@ const Home = () => {
           <h2>All Collections are available</h2>
           <hr />
           <div className="products">
-            {data &&
-              data.map((product) => (
+            {items &&
+              items.map((product) => (
                 <div key={product.id} className="product">
                   <h3>{product.name}</h3>
                   <img src={product.image} alt={product.name} />
@@ -33,6 +38,9 @@ const Home = () => {
                   </div>
                   <button onClick={() => handleAddToCart(product)}>
                     Add to Cart
+                  </button>
+                  <button onClick={() => handleAddToWish(product)}>
+                    Wish to Buy
                   </button>
                 </div>
               ))}
